@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
-using System.Collections.Generic;
 
 namespace Zalloc.App;
 
@@ -10,7 +10,7 @@ namespace Zalloc.App;
 public class ParsingBenchmarks
 {
     private string _testData = "key1=value1;key2=value2;key3=value3;key4=value4;key5=value5";
-    
+
     [Benchmark(Baseline = true)]
     public void TraditionalParsing()
     {
@@ -22,7 +22,7 @@ public class ParsingBenchmarks
                 dict[parts[0]] = parts[1];
         }
     }
-    
+
     [Benchmark]
     public void SpanBasedParsing()
     {
@@ -37,7 +37,7 @@ public class ParsingBenchmarks
             }
         }
     }
-    
+
     [Benchmark]
     public void ZeroAllocationParsing()
     {
@@ -51,20 +51,20 @@ public class ParsingBenchmarks
             count++;
         }
     }
-    
+
     [Benchmark]
     public void SpanWithDictionary()
     {
         // Zero allocation during parsing, but controlled allocation for storage
         var dict = new Dictionary<string, string>(5); // Pre-sized to avoid resizing
         var parser = new ConfigLineParser(_testData.AsSpan());
-        
+
         while (parser.TryGetNextEntry(out var key, out var value))
         {
             // Allocate strings only when storing in dictionary
             dict[key.ToString()] = value.ToString();
         }
     }
-    
+
     private bool NeedToStore(ReadOnlySpan<char> span) => span.Length > 0;
 }
