@@ -45,6 +45,8 @@ App running → GC triggered → ⏸️ PAUSE (all threads stop!) → Resume
                          Lag, stutter, dropped frames!
 ```
 
+![The GC Problem](./assets/the_gc_problem.png)
+
 For real-time systems, game loops, or high-frequency trading, **GC pauses are unacceptable**.
 
 ---
@@ -194,13 +196,6 @@ Using BenchmarkDotNet, we compare:
 - .NET 10.0.2, macOS on Apple M1 Pro
 - BenchmarkDotNet v0.14.0
 - Test data: `"key1=value1;key2=value2;key3=value3;key4=value4;key5=value5"`
-
-| Method                       | Mean         | Allocated | Speed            | Memory Saved |
-| ---------------------------- | ------------ | --------- | ---------------- | ------------ |
-| **ZeroAllocationParsing** ⭐ | **21.23 ns** | **0 B**   | **13.0x faster** | **100%**     |
-| SpanBasedParsing             | 47.79 ns     | 160 B     | 5.8x faster      | 88%          |
-| SpanWithDictionary           | 141.80 ns    | 688 B     | 2.0x faster      | 48%          |
-| TraditionalParsing           | 277.28 ns    | 1,328 B   | Baseline         | -            |
 
 ![Real Benchmark Results](./assets/benchmark_results.png)
 
