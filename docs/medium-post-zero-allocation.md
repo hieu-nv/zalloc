@@ -206,20 +206,11 @@ Using BenchmarkDotNet, we compare:
 
 **Time Comparison** (lower is better):
 
-```
-Traditional    ████████████████████████████  277.28 ns
-Span+Dict      ██████████████                141.80 ns (49% faster)
-Span+Filter    █████                          47.79 ns (83% faster)
-Zero-Alloc     ██                             21.23 ns (92% faster) ⭐
-```
+![Time Comparison](./assets/time_comparison.png)
 
 **Memory Comparison** (lower is better):
 
-```
-Traditional    ██████████████████████████  1,328 B
-Span+Dict      █████████████                 688 B (48% reduction)
-Span+Filter    ██                            160 B (88% reduction)
-Zero-Alloc                                     0 B (100% reduction) 🎉
+![Memory Comparison](./assets/memory_comparison.png)
 ```
 
 ---
