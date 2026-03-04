@@ -56,8 +56,8 @@ while (parser.TryGetNextEntry(out var key, out var value))  // STACK only!
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/Zalloc.git
-cd Zalloc
+git clone https://github.com/hieu-nv/zalloc.git
+cd zalloc
 
 # Run benchmarks (MUST use Release configuration!)
 dotnet run -c Release --project Zalloc.App
@@ -169,8 +169,10 @@ Zalloc/
 │   └── BenchmarkDotNet.Artifacts/
 │       └── results/             # 📈 Auto-generated reports
 ├── docs/
-│   └── BENCHMARK_REPORT.md      # 📖 Detailed performance analysis
-└── README.md                     # 📄 You are here
+│   ├── BENCHMARK_REPORT.md           # 📊 Detailed performance analysis
+│   ├── medium-post-zero-allocation.md # 📝 Medium post draft
+│   └── zero-allocation-training.md    # 🎓 Training document (Vietnamese)
+└── README.md                          # 📄 You are here
 ```
 
 ## 🎓 Learning Objectives
@@ -201,6 +203,8 @@ dotnet run --project Zalloc.App
 ## 📚 Additional Resources
 
 - **[Detailed Benchmark Report](docs/BENCHMARK_REPORT.md)** - Full analysis with charts and explanations
+- **[Medium Post: Zero-Allocation String Parsing](docs/medium-post-zero-allocation.md)** - Deep dive with performance analysis
+- **[Training Document (Vietnamese)](docs/zero-allocation-training.md)** - Comprehensive training guide
 - **[BenchmarkDotNet Documentation](https://benchmarkdotnet.org/)** - Learn about performance benchmarking
 - **[Span<T> Guide](https://learn.microsoft.com/en-us/archive/msdn-magazine/2018/january/csharp-all-about-span-exploring-a-new-net-mainstay)** - Deep dive into spans
 - **[Memory Management in .NET](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/)** - Understanding the heap and GC

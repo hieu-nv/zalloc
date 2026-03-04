@@ -195,12 +195,14 @@ Using BenchmarkDotNet, we compare:
 - BenchmarkDotNet v0.14.0
 - Test data: `"key1=value1;key2=value2;key3=value3;key4=value4;key5=value5"`
 
-| Method                | Mean      | Allocated | Ratio | Speed Improvement   |
-| --------------------- | --------- | --------- | ----- | ------------------- |
-| ZeroAllocationParsing | 21.23 ns  | 0 B       | 0.08x | **13.0x faster** ⭐ |
-| SpanBasedParsing      | 47.79 ns  | 160 B     | 0.17x | 5.8x faster         |
-| SpanWithDictionary    | 141.80 ns | 688 B     | 0.51x | 2.0x faster         |
-| TraditionalParsing    | 277.28 ns | 1,328 B   | 1.00x | Baseline            |
+| Method                       | Mean         | Allocated | Speed            | Memory Saved |
+| ---------------------------- | ------------ | --------- | ---------------- | ------------ |
+| **ZeroAllocationParsing** ⭐ | **21.23 ns** | **0 B**   | **13.0x faster** | **100%**     |
+| SpanBasedParsing             | 47.79 ns     | 160 B     | 5.8x faster      | 88%          |
+| SpanWithDictionary           | 141.80 ns    | 688 B     | 2.0x faster      | 48%          |
+| TraditionalParsing           | 277.28 ns    | 1,328 B   | Baseline         | -            |
+
+![Real Benchmark Results](./assets/benchmark_results.png)
 
 ### Performance Analysis
 
@@ -462,3 +464,7 @@ By switching to span-based parsing, you can dramatically improve performance and
 - [Memory and Spans in .NET](https://learn.microsoft.com/en-us/dotnet/standard/memory-and-spans/)
 
 **Questions or experiences with zero-allocation parsing? Share in the comments below!** 💬
+
+---
+
+*This article is based on the **[Zalloc](https://github.com/hieu-nv/zalloc)** educational project. Check out the repository for full source code and benchmarks.*

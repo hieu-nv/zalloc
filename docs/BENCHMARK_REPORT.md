@@ -506,7 +506,7 @@ For a typical microservice processing 10K requests/sec:
 
 ```bash
 # Clone or navigate to project
-cd /Users/hieunv/Documents/tmp/Zalloc/Zalloc
+cd /Users/hieunv/Documents/tmp/zalloc
 
 # Run benchmarks (Release mode required)
 dotnet run -c Release
